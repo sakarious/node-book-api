@@ -17,3 +17,8 @@ const bookSchema = Schema({
     imageURL: String,
     tags: []
 })
+
+const bookModel = mongoose.model('books', bookSchema)
+
+module.exports = bookModel
+
