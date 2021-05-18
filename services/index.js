@@ -36,4 +36,16 @@ module.exports = class bookServices {
             console.log(err.message);
         }
     }
+
+    static async editABook (id, title, author, description, category, imageURL, tags){
+        try{
+            let updatedBook = bookDB.findByIdAndUpdate(id, {
+                $set: { title, author, description, category}
+            }, {new: true})
+            return updatedBook
+
+        } catch(err) {
+            console.log(err.message);
+        }
+    }
 }

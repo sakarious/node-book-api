@@ -20,7 +20,7 @@ const bookSchema = Schema({
         type: Number,
         default: 0
     },
-    imageURL: String,
+    imageURL: [],
     tags: []
 })
 

@@ -16,9 +16,9 @@ module.exports = class bookController {
             let id = req.params.id
             let book = await bookServices.getABook(id)
             if(book){
-                res.json({status: "Successful", data: book, error: null})
+                res.json({status: "Found", data: book, error: null})
             } else{
-                res.status(404).json({status: "Error", message: "Book not found", error: true})
+                res.status(404).json({status: "Not Found", message: "Book not found", error: true})
             }
         } catch(err){
             res.status(500).json({error: true, message: err.message || "Can't get a book right now"})
@@ -45,7 +45,21 @@ module.exports = class bookController {
     }
 
     static async editABook(req, res) {
-        res.send('EDIT A BOOK: Live from controller')
+        try{
+            console.log(req.body);
+            let id = req.params.id
+            let title = req.body.title
+            let author = req.body.author
+            let description = req.body.description
+            let category = req.body.category
+
+            let newBook = await bookServices.editABook(id, title, author, description, category)
+
+            res.status(201).json({status: "Successfully Updated", data: newBook, error: null})
+
+        } catch(err) {
+            res.status(500).json({error: true, message: err.message || "Can't Edit a book right now"})
+        }
     }
 
     static async deleteABook(req, res) {
