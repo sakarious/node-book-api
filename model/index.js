@@ -7,13 +7,19 @@ const bookSchema = Schema({
         required: true
     },
     author: String,
-    description: String,
+    description: {
+        type: String,
+        required: true
+    },
     category: {
         type: String,
         enum: ['Fictional', 'Non-Fictional', 'Comics', 'Others'],
         required: true
     },
-    purchaseCount: Number,
+    purchaseCount: {
+        type: Number,
+        default: 0
+    },
     imageURL: String,
     tags: []
 })

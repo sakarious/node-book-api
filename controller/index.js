@@ -26,7 +26,22 @@ module.exports = class bookController {
     }
 
     static async addABook(req, res) {
-        res.send('ADD A BOOK: Live from controller')
+        try{
+            console.log(req.body);
+            let title = req.body.title
+            let author = req.body.author
+            let description = req.body.description
+            let category = req.body.category
+            let imageURL = (req.body.imageURL) ? req.body.imageURL : 'none'
+            let tags = (req.body.tags) ? req.body.tags : 'book'
+
+            let newBook = await bookServices.addABook(title, author, description, category, imageURL, tags)
+
+            res.status(201).json({status: "Successfully Added", data: newBook, error: null})
+
+        } catch(err) {
+            res.status(500).json({error: true, message: err.message || "Can't add a book right now"})
+        }
     }
 
     static async editABook(req, res) {
