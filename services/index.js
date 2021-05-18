@@ -48,4 +48,14 @@ module.exports = class bookServices {
             console.log(err.message);
         }
     }
+
+    static async deleteABook (id){
+        try{
+            let deletedBook = bookDB.findByIdAndDelete(id)
+            return deletedBook
+
+        } catch(err) {
+            console.log(err.message);
+        }
+    }
 }

@@ -63,6 +63,15 @@ module.exports = class bookController {
     }
 
     static async deleteABook(req, res) {
-        res.send('DELETE A BOOK: Live from controller')
+        try{
+            let id = req.params.id
+
+            let deletedBook = await bookServices.deleteABook(id)
+
+            res.json({status: "Successfully Deleted", data: deletedBook, error: null})
+
+        } catch(err) {
+            res.status(500).json({error: true, message: err.message || "Can't Delete a book right now"})
+        }
     }
 }
