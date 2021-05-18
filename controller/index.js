@@ -18,7 +18,7 @@ module.exports = class bookController {
             if(book){
                 res.json({status: "Found", data: book, error: null})
             } else{
-                res.status(404).json({status: "Not Found", message: "Book not found", error: true})
+                res.status(404).json({status: "Not Found", message: "Book not found", error: null})
             }
         } catch(err){
             res.status(500).json({error: true, message: err.message || "Can't get a book right now"})
