@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 // Get a book by description
-router.get('/:bookName', (req, res) => {
+router.get('/:id', (req, res) => {
     bookController.getABook(req, res)
 })
 
@@ -18,12 +18,12 @@ router.post('/', (req, res) => {
 })
 
 // Edit a book in catalog
-router.put('/:bookName', (req, res) => {
+router.put('/:id', (req, res) => {
     bookController.editABook(req, res)
 })
 
 // Delete a book
-router.delete('/:bookName', (req, res) => {
+router.delete('/:id', (req, res) => {
     bookController.deleteABook(req, res)
 })
 module.exports = router
