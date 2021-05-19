@@ -1,9 +1,7 @@
 const bookRoutes = require('./book')
+const userRoutes = require('./users')
 
 module.exports = (app) => {
-    app.get('/', (req, res) => {
-        res.send('Live')
-    })
-
+    app.use('/',userRoutes)
     app.use('/api', bookRoutes)
 }
