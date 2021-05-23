@@ -6,8 +6,8 @@ router.post('/register', (req, res) => {
     userController.Register(req, res)
 })
 
-router.get('/login', (req, res) => {
+router.post('/login', (req, res) => {
     userController.Login(req, res)
-})
+}) 
 
 module.exports = router

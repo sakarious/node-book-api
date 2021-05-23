@@ -14,10 +14,18 @@ module.exports = class userServices {
             password
         })
 
-        return newUser.save()
+        return newUser.save() 
     }
 
-    static async Login () {
-        return 'Login Services'
+    static async Login (username, passwd) {
+        let foundUser = await userModel.findOne({username})
+        if(!foundUser){
+            return false
+        } else {
+            let password = await bcrypt.compare(passwd, foundUser.password);
+            if (password){
+                return foundUser
+            }
+        }
     }
 }

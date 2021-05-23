@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const bookController = require('../controller')
+const userController = require('../controller/user')
 
 //Get all Books
-router.get('/', (req, res) => {
+router.get('/', userController.loginRequired, (req, res) => {
     bookController.getAllBooks(req, res)
 })
 
